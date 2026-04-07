@@ -37,8 +37,7 @@ Különösen külső meghajtók (E:, F:, stb.) gyökerében történő teljes ta
 - Probléma esetén a `Log\` mappában található fájlokat küldd el.
 
 ---
-
-**Készítette:** Grok + Attila  
+ 
 **Verzió:** 2026.04  
 **Cél:** Karbantartás, adatmentés előkészítés, Live Linux előtti takarítás
 

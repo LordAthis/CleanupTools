@@ -21,7 +21,7 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 Clear-Host
 
-Write-Log "Mély helyvizsgálat indul (v0.2) - Meghajtó: $Drive" "Green"
+Write-Log "Mély helyvizsgálat indul (v0.2.2) - Meghajtó: $Drive" "Green"
 
 # Dinamikus meghajtó betű
 $DriveLetter = (Split-Path $Drive -Qualifier).Trim(':')

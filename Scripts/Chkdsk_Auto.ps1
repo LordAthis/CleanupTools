@@ -21,16 +21,16 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 Clear-Host
 
-$Target = Read-Host "Cél meghajtó vagy mappa (pl. E:) [E:]"
+$Target = Read-Host "Cél (pl. E:) [E:]"
 if ([string]::IsNullOrWhiteSpace($Target)) { $Target = "E:" }
 
-Write-Log "CHKDSK indul: $Target" "Green"
+Write-Log "CHKDSK indul: $Target (v0.1)" "Green"
 
-$choice = Read-Host "1=Csak ellenőrzés | 2=Kérdezős | 3=Automatikus javítás [3]"
+$choice = Read-Host "1=Csak ellenőrzés | 2=Kérdezős | 3=Automatikus [3]"
 $params = if ($choice -eq "1") { "/scan" } elseif ($choice -eq "2") { "/f /r" } else { "/f /r /x" }
 
 chkdsk $Target $params.Split() 2>&1 | Out-File $LogFile -Append -Encoding UTF8
 
-Write-Log "CHKDSK lefutott." "Green"
+Write-Log "CHKDSK kész." "Green"
 Write-Host "`nNyomj ENTER-t..." -ForegroundColor DarkGray
 Read-Host

@@ -1,5 +1,5 @@
 # ================================================
-# SpaceDeepCheck.ps1 - 0.2 verzió
+# SpaceDeepCheck.ps1  -  v0.2
 # ================================================
 
 $ErrorActionPreference = 'SilentlyContinue'
@@ -21,17 +21,17 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 Clear-Host
 
-Write-Log "Mély helyvizsgálat indul ($Drive)..." "Green"
+Write-Log "Mély helyvizsgálat indul (v0.1)..." "Green"
 
-$Used = [math]::Round((Get-PSDrive (Split-Path $Drive -Qualifier).Trim(':')).Used / 1GB, 2)
+$Used = [math]::Round(((Get-PSDrive E).Used)/1GB, 2)
 Write-Log "Foglalt hely: $Used GB" "Red"
 
 Write-Log "`nLegnagyobb mappák:" "Yellow"
 Get-ChildItem $Drive -Directory -Force | ForEach-Object {
     $size = (Get-ChildItem $_.FullName -Recurse -Force -ErrorAction SilentlyContinue | Measure-Object Length -Sum).Sum / 1GB
-    if ($size -gt 0.1) { Write-Log "$([math]::Round($size,2)) GB → $($_.Name)" "White" }
+    if ($size -gt 0.05) { Write-Log "$([math]::Round($size,2)) GB → $($_.Name)" "White" }
 }
 
-Write-Log "`nKész! Log: $LogFile" "Green"
+Write-Log "Mély vizsgálat kész." "Green"
 Write-Host "`nNyomj ENTER-t..." -ForegroundColor DarkGray
 Read-Host

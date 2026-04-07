@@ -1,5 +1,5 @@
 # ================================================
-# NTFS_Reset.ps1 - 0.2 verzió
+# NTFS_Reset.ps1  -  v0.2
 # ================================================
 
 $ErrorActionPreference = 'SilentlyContinue'
@@ -21,11 +21,9 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 Clear-Host
 
-Write-Log "NTFS Reset indul ($Drive)..." "Green"
+Write-Log "NTFS Reset indul (v0.2)..." "Green"
 
 Stop-Service "WSearch","VSS" -Force -ErrorAction SilentlyContinue
-
-Write-Log "USN Journal törlése..." "Yellow"
 fsutil usn deletejournal /D $Drive | Out-Null
 
 $SVI = "$Drive\System Volume Information"
@@ -38,7 +36,6 @@ if (-not (Test-Path $SVI)) { New-Item -Path $SVI -ItemType Directory -Force | Ou
 
 vssadmin resize shadowstorage /for=$Drive /on=$Drive /maxsize=300MB | Out-Null
 
-Write-Log "NTFS Reset kész! Ajánlott: újraindítás" "Green"
-Write-Log "Log: $LogFile" "Cyan"
+Write-Log "NTFS Reset kész. Ajánlott: újraindítás." "Green"
 Write-Host "`nNyomj ENTER-t..." -ForegroundColor DarkGray
 Read-Host

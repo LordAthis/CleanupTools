@@ -59,6 +59,7 @@ CleanupTools/                  ← Repo gyökér (vagy Cleanup-Tools)
 ├── Log/                           ← Ide kerülnek a futás közbeni logok (gitignored)
 ├── Docs/                          ← Dokumentáció
 │   └── Használati_útmutató.md
+├── _archive/                           ← Ide kerülnek a fájlok korábbi verziói
 │
 ├── .gitignore
 ├── README.md

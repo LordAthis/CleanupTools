@@ -1,5 +1,5 @@
 # ================================================
-# LogAnalyzer.ps1 - 0.2 verzió
+# LogAnalyzer.ps1  -  v0.2
 # ================================================
 
 $ErrorActionPreference = 'SilentlyContinue'
@@ -23,6 +23,8 @@ if ($deep) {
     } else {
         Write-Host "✅ Nincs kritikus rejtett foglaltság." -ForegroundColor Green
     }
+} else {
+    Write-Host "Még nincs DeepSpaceCheck log." -ForegroundColor Yellow
 }
 
 Write-Host "`nLog elemzés kész." -ForegroundColor Cyan

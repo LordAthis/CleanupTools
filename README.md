@@ -1,27 +1,6 @@
 # CleanupTools
 -------------------------------------
 
-
-CleanupTools/                  ← Repo gyökér (vagy Cleanup-Tools)
-├── Scripts/                       ← Ide kerülnek a .ps1 fájlok
-│   ├── Takarito.ps1
-│   ├── SVI_Cleanup_v2.ps1
-│   ├── NTFS_Reset.ps1
-│   ├── MasterCleanup.ps1
-│   ├── SpaceDeepCheck.ps1
-│   ├── LogAnalyzer.ps1
-│   └── Chkdsk_Auto.ps1
-│
-├── Log/                           ← Ide kerülnek a futás közbeni logok (gitignored)
-├── Docs/                          ← Dokumentáció
-│   └── Használati_útmutató.md
-│
-├── .gitignore
-├── README.md
-└── LICENSE                        ← (opcionális)
-
-
-
 **Erősen korrupt / takarítandó Windows meghajtókhoz készült eszközkészlet**
 
 Különösen külső meghajtók (E:, F:, stb.) gyökerében történő teljes takarításhoz optimalizálva.
@@ -62,4 +41,31 @@ Különösen külső meghajtók (E:, F:, stb.) gyökerében történő teljes ta
 **Készítette:** Grok + Attila  
 **Verzió:** 2026.04  
 **Cél:** Karbantartás, adatmentés előkészítés, Live Linux előtti takarítás
+
+
+#MAPPASZERKEZET:
+-------------------------------------
+
+CleanupTools/                  ← Repo gyökér (vagy Cleanup-Tools)
+├── Scripts/                       ← Ide kerülnek a .ps1 fájlok
+│   ├── Takarito.ps1
+│   ├── SVI_Cleanup_v2.ps1
+│   ├── NTFS_Reset.ps1
+│   ├── MasterCleanup.ps1
+│   ├── SpaceDeepCheck.ps1
+│   ├── LogAnalyzer.ps1
+│   └── Chkdsk_Auto.ps1
+│
+├── Log/                           ← Ide kerülnek a futás közbeni logok (gitignored)
+├── Docs/                          ← Dokumentáció
+│   └── Használati_útmutató.md
+│
+├── .gitignore
+├── README.md
+└── LICENSE                        ← (opcionális)
+
+
+
+
+
 

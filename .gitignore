@@ -23,3 +23,5 @@ System Volume Information/
 # Egyéb
 *.bak
 *.old
+_archive/
+

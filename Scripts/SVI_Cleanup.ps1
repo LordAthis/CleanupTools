@@ -1,5 +1,5 @@
 # ================================================
-# SVI_Cleanup_v2.ps1 0.2 verzió
+# SVI_Cleanup.ps1 - 0.2 verzió
 # ================================================
 
 $ErrorActionPreference = 'SilentlyContinue'

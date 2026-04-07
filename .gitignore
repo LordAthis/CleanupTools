@@ -1,0 +1,25 @@
+# Logok és ideiglenes fájlok
+Log/
+*.log
+*Log_*.txt
+
+# Windows specifikus
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+System Volume Information/
+
+# PowerShell
+*.tmp
+*.ps1xml
+
+# Editor fájlok
+.vscode/
+.idea/
+*.suo
+*.user
+
+# Egyéb
+*.bak
+*.old

@@ -1,5 +1,5 @@
 # ================================================
-# SVI_Cleanup.ps1 - 0.2 verzió
+# SVI_Cleanup.ps1  -  v0.2
 # ================================================
 
 $ErrorActionPreference = 'SilentlyContinue'
@@ -23,30 +23,23 @@ Clear-Host
 
 $SVIFolder = "$Drive\System Volume Information"
 
-Write-Log "SVI teljes kiürítés indul..." "Green"
+Write-Log "SVI takarítás indul (v0.2)..." "Green"
 
-# Shadow Copies törlése
-Write-Log "1. Shadow Copies törlése..." "Yellow"
 vssadmin delete shadows /for=$Drive /all /quiet | Out-Null
+Write-Log "Shadow Copies törölve." "Green"
 
-# Storage csökkentése
-Write-Log "2. Shadow Storage minimalizálása (300MB)..." "Yellow"
 vssadmin resize shadowstorage /for=$Drive /on=$Drive /maxsize=300MB | Out-Null
+Write-Log "Shadow Storage minimalizálva." "Green"
 
-# Teljes SVI törlés
-Write-Log "3. System Volume Information teljes törlése..." "Yellow"
 takeown /F "$SVIFolder" /R /A /D Y | Out-Null
 icacls "$SVIFolder" /grant "*S-1-5-32-544:F" /T /C /Q | Out-Null
-attrib -s -h -r "$SVIFolder" /S /D | Out-Null
 rd "$SVIFolder" /s /q 2>&1 | Out-File $LogFile -Append -Encoding UTF8
 
 Start-Sleep -Seconds 2
 if (-not (Test-Path $SVIFolder)) {
     New-Item -Path $SVIFolder -ItemType Directory -Force | Out-Null
-    Write-Log "SVI mappa újralétrehozva (üres)" "Green"
 }
 
-Write-Log "SVI tisztítás kész!" "Green"
-Write-Log "Log: $LogFile" "Cyan"
+Write-Log "SVI takarítás kész." "Green"
 Write-Host "`nNyomj ENTER-t..." -ForegroundColor DarkGray
 Read-Host

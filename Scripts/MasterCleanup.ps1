@@ -1,5 +1,5 @@
 # ================================================
-# MasterCleanup.ps1  -  v0.2.2
+# MasterCleanup.ps1  -  v0.2.3
 # ================================================
 
 $ErrorActionPreference = 'SilentlyContinue'
@@ -19,7 +19,7 @@ $LogFolder = Join-Path $Drive "Log"
 if (-not (Test-Path $LogFolder)) { New-Item -Path $LogFolder -ItemType Directory -Force | Out-Null }
 
 Write-Host "=============================================================" -ForegroundColor DarkCyan
-Write-Host "          MASTERCLEANUP v0.2.2" -ForegroundColor Green
+Write-Host "          MASTERCLEANUP v0.2" -ForegroundColor Green
 Write-Host "=============================================================`n" -ForegroundColor DarkCyan
 
 Write-Host "Automatikus log elemzés..." -ForegroundColor Yellow

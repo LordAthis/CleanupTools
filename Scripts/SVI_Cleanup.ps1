@@ -63,7 +63,7 @@ try {
 # ── 2. Shadow Copies törlése a VSS-en keresztül ───────────────────────────────
 Write-Log "--- 2. Shadow Copies törlése ---" "Yellow"
 try {
-    $vssOut = & vssadmin delete shadows /for=$DriveSpec /quiet 2>&1
+    $vssOut = & (Get-VssAdmin) delete shadows /for=$DriveSpec /quiet 2>&1
     Write-Log "VSS törlés: $vssOut" "Cyan"
 } catch {
     Write-Log "VSS törlés hiba: $($_.Exception.Message)" "Red"
@@ -113,7 +113,7 @@ try {
 Write-Log "--- 5. System Restore letiltása a meghajtóra ---" "Yellow"
 try {
     # WMI-n keresztül
-    $restoreResult = & vssadmin delete shadows /for=$DriveSpec /oldest /quiet 2>&1
+    $restoreResult = & (Get-VssAdmin) delete shadows /for=$DriveSpec /oldest /quiet 2>&1
     Write-Log "Oldest shadow delete: $restoreResult" "DarkCyan"
 
     # Rendszer visszaállítás letiltása (Ha külső meghajtó, amúgy sem kellene futni, belsőn is csak a rendszer számára érdekes)

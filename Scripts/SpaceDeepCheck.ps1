@@ -142,13 +142,13 @@ try {
 # ── 4. Shadow Copies ──────────────────────────────────────────────────────────
 Write-Log "`n[4] VOLUME SHADOW COPIES" "Yellow"
 try {
-    $shadows = & vssadmin list shadows /for=$DriveSpec 2>&1
+    $shadows = & (Get-VssAdmin) list shadows /for=$DriveSpec 2>&1
     if ($shadows -match "No items found") {
         Write-Log "  Shadow Copies: nincsenek (rendben)" "Green"
     } else {
         Write-Log "  Shadow Copies megtalálva!`n$($shadows | ForEach-Object { "    $_" } | Out-String)" "Red"
     }
-    $shadowStorage = & vssadmin list shadowstorage /for=$DriveSpec 2>&1
+    $shadowStorage = & (Get-VssAdmin) list shadowstorage /for=$DriveSpec 2>&1
     Write-Log "  Shadow Storage: $($shadowStorage | Out-String)" "DarkCyan"
 } catch {
     Write-Log "  VSS lekérés hiba: $($_.Exception.Message)" "Yellow"

@@ -5,6 +5,9 @@
 
 Különösen külső meghajtók (E:, F:, stb.) gyökerében történő teljes takarításhoz optimalizálva.
 
+# FIGYELEM!
+# Minden felelősség Téged terhel, használd ésszel, és csak akkor, ha tudod is, hogy mit csinálsz!
+
 ## Funkciók
 
 - Teljes mappa takarítás (saját script kivételével)

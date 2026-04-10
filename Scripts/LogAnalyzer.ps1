@@ -158,7 +158,7 @@ if ($usnQuery -match "Maximum Size\s*=\s*0x[1-9]") {
 # Shadow copies
 $shadows = & (Get-VssAdmin) list shadows /for=$DriveSpec 2>&1 | Out-String
 if ($shadows -notmatch "No items found") {
-    $recommendations += "[FONTOS] Volume Shadow Copies találhatók. Futtasd az SVI_Cleanup_v2.ps1-et!"
+    $recommendations += "[FONTOS] Volume Shadow Copies találhatók. Futtasd az SVI_Cleanup.ps1-et!"
 }
 
 # Hibák alapján

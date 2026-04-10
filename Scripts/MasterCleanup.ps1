@@ -1,5 +1,5 @@
 # ================================================
-# LogAnalyzer.ps1  -  v0.8
+# MasterCleanUp.ps1  -  v0.8
 # ================================================
 
 #Requires -RunAsAdministrator

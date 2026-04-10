@@ -81,11 +81,11 @@ try {
 Write-Log "--- 2. Volume Shadow Copies (VSS) törlése ---" "Yellow"
 try {
     # Meglévő shadowok listázása
-    $shadows = & vssadmin list shadows /for=$DriveSpec 2>&1
+    $shadows = & (Get-VssAdmin) list shadows /for=$DriveSpec 2>&1
     Write-Log "Shadow Copies (előtte):`n$shadows" "DarkCyan"
 
     # Minden shadow copy törlése a meghajtóról
-    $deleteVss = & vssadmin delete shadows /for=$DriveSpec /quiet 2>&1
+    $deleteVss = & (Get-VssAdmin) delete shadows /for=$DriveSpec /quiet 2>&1
     Write-Log "VSS törlés: $deleteVss" "Cyan"
 
     # WMI-n keresztül is (ha a vssadmin nem törölt mindent)

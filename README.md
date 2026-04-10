@@ -25,13 +25,13 @@ Minden felelősség Téged terhel, használd ésszel, és csak akkor, ha tudod i
 2. Futtasd **rendszergazdaként** a `MasterCleanup.ps1` fájlt
 3. Válaszd a kívánt opciót (ajánlott: 1-es teljes takarítás)
 
-**Fontos**: Minden script automatikusan admin jogot kér, UTF-8 támogatással rendelkezik, és a `Log\` mappába írja a naplókat.
+**Fontos**: Minden script automatikusan admin jogot kér, UTF-8 (és UTF-8 BOM) támogatással rendelkezik, és a `Log\` mappába írja a naplókat.
 
 ## Fájlok
 
 - `MasterCleanup.ps1` → Központi menü
 - `Takarito.ps1` → Agresszív fájl/mappa törlés
-- `NTFS_Reset.ps1` → 6 GB+ rejtett foglaltságok ellen
+- `NTFS_Reset.ps1` → A rejtett foglaltságok ellen
 - `SpaceDeepCheck.ps1` → Részletes helyfoglalás vizsgálat
 - `LogAnalyzer.ps1` → Automatikus elemzés és javaslatok
 
@@ -43,8 +43,8 @@ Minden felelősség Téged terhel, használd ésszel, és csak akkor, ha tudod i
 
 ---
  
-**Verzió:** 2026.04  
-**Cél:** Karbantartás, adatmentés előkészítés, Live Linux előtti takarítás
+**Verzió:** 0.8 (2026)  
+**Cél:** Karbantartás, adatmentés előkészítés, takarítás
 
 
 #MAPPASZERKEZET:
@@ -61,7 +61,7 @@ CleanupTools/                  ← Repo gyökér (vagy Cleanup-Tools)
 │   └── Chkdsk_Auto.ps1
 │
 ├── Log/                           ← Ide kerülnek a futás közbeni logok (gitignored)
-├── Docs/                          ← Dokumentáció
+├── Docs/                          ← Dokumentáció (Hamarosan!)
 │   └── Használati_útmutató.md
 ├── _archive/                           ← Ide kerülnek a fájlok korábbi verziói
 │

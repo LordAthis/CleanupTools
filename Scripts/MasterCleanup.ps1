@@ -233,7 +233,7 @@ function Start-QuickDiag {
     Write-Log '' 'White' -NoTimestamp
     Write-Log '[4] Volume Shadow Copies' 'Yellow'
     try {
-        $shadowOut = & vssadmin list shadows /for=$spec 2>&1 | Out-String
+        $shadowOut = & (Get-VssAdmin) list shadows /for=$spec 2>&1 | Out-String
         if ($shadowOut -match 'No items found|Nincsenek elemek') {
             Write-Log '    Shadow Copies: nincsenek (OK)' 'Green'
         } else {

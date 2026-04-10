@@ -1,3 +1,7 @@
+# ================================================
+# SVI_Cleanup.ps1  -  v0.8
+# ================================================
+
 <#
 .SYNOPSIS
     CleanupTools – SVI_Cleanup.ps1
@@ -34,8 +38,6 @@ function Write-Log {
     Write-Host "$stamp $Msg" -ForegroundColor $Color
 }
 
-Write-Log "=== SVI_Cleanup_v2.ps1 indítása ===" "Green"
-Write-Log "Meghajtó: $DriveSpec" "Cyan"
 
 function Get-VssAdmin {
     if ([Environment]::Is64BitProcess) { return "vssadmin.exe" }
@@ -43,6 +45,9 @@ function Get-VssAdmin {
     if (Test-Path $sn) { return $sn }
     return "vssadmin.exe"  # fallback
 }
+
+Write-Log "=== SVI_Cleanup.ps1 indítása ===" "Green"
+Write-Log "Meghajtó: $DriveSpec" "Cyan"
 
 if (!(Test-Path $SviPath)) {
     Write-Log "System Volume Information mappa nem létezik – kész." "Green"
@@ -135,5 +140,5 @@ try {
     Write-Log "Attribútum visszaállítás: $($_.Exception.Message)" "Yellow"
 }
 
-Write-Log "=== SVI_Cleanup_v2 kész ===" "Green"
+Write-Log "=== SVI_Cleanup kész ===" "Green"
 Write-Log "Log: $LogFile" "Cyan"

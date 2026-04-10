@@ -1,4 +1,4 @@
-## CleanupTools
+# CleanupTools
 -------------------------------------
 
 **Erősen korrupt / takarítandó Windows meghajtókhoz készült eszközkészlet**
@@ -6,7 +6,9 @@
 Különösen külső meghajtók (E:, F:, stb.) gyökerében történő teljes takarításhoz optimalizálva.
 
 # FIGYELEM!
-# Minden felelősség Téged terhel, használd ésszel, és csak akkor, ha tudod is, hogy mit csinálsz!
+Minden felelősség Téged terhel, használd ésszel, és csak akkor, ha tudod is, hogy mit csinálsz!
+
+
 
 ## Funkciók
 

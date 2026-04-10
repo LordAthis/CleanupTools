@@ -99,6 +99,14 @@ function Write-Log {
 # 4. SEGITSEDFUGGVENYEK
 # ==============================================================================
 
+# 32-bit PS / WOW64 redirection javítás: SysNative fallback
+function Get-VssAdmin {
+    if ([Environment]::Is64BitProcess) { return "vssadmin.exe" }
+    $sn = Join-Path $env:windir "SysNative\vssadmin.exe"
+    if (Test-Path $sn) { return $sn }
+    return "vssadmin.exe"  # fallback
+}
+
 # Meghajtó betűjele és szabad hely
 function Get-DriveInfo {
     $letter = (Split-Path -Qualifier $DriveRoot).TrimEnd(':')

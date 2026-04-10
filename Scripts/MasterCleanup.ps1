@@ -1,11 +1,13 @@
+# ================================================
+# LogAnalyzer.ps1  -  v0.8
+# ================================================
+
 #Requires -RunAsAdministrator
 <#
 .SYNOPSIS
     CleanupTools - MasterCleanup.ps1
     Univerzalis szervizes eszkoz kulso NTFS meghajtok takaritasahoz.
     Futtatható a Scripts\ almappaból VAGY a meghajtó gyökeréből egyaránt.
-.VERSION
-    2026.04
 .NOTES
     Karakterkódolás: A script minden kiírást ASCII-kompatibilis módon kezel,
     hogy sérült/vegyes kódolású rendszereken se törjön el.
@@ -239,7 +241,7 @@ function Start-QuickDiag {
             $count = ([regex]::Matches($shadowOut, 'Shadow Copy ID')).Count
             Write-Log ("    Shadow Copies talalhatok: $count db") 'Red'
             $issues += "Shadow Copies: $count db"
-            $recs   += '[FONTOS] Futtasd az SVI_Cleanup_v2.ps1-et!'
+            $recs   += '[FONTOS] Futtasd az SVI_Cleanup.ps1-et!'
         }
     } catch {
         Write-Log ('    Shadow Copy lekerdezes sikertelen: ' + $_.Exception.Message) 'DarkGray'
@@ -298,12 +300,12 @@ function Start-QuickDiag {
             Write-Log ("    SVI merete: $sviGB GB") $sviColor
             if ($sviGB -gt 0.5) {
                 $issues += "SVI: $sviGB GB"
-                $recs   += '[FONTOS] Futtasd az SVI_Cleanup_v2.ps1-et!'
+                $recs   += '[FONTOS] Futtasd az SVI_Cleanup.ps1-et!'
             }
         } catch {
             Write-Log '    SVI mappa hozzaferhetetlen (access denied) - ez gyanús!' 'Yellow'
             $issues += 'SVI mappa zarolva (hozzaferhetetlen)'
-            $recs   += '[FONTOS] Futtasd az SVI_Cleanup_v2.ps1-et (jogosultsag-visszaszerzes)!'
+            $recs   += '[FONTOS] Futtasd az SVI_Cleanup.ps1-et (jogosultsag-visszaszerzes)!'
         }
     } else {
         Write-Log '    SVI mappa nem letezik (OK)' 'Green'
@@ -370,7 +372,7 @@ function Show-Menu {
 
     Write-Host ''
     Write-Host '  +--------------------------------------------------+' -ForegroundColor Cyan
-    Write-Host '  |      CleanupTools  -  MasterCleanup v2026.04     |' -ForegroundColor Cyan
+    Write-Host '  |      CleanupTools  -  MasterCleanup v0.8     |' -ForegroundColor Cyan
     Write-Host '  +--------------------------------------------------+' -ForegroundColor Cyan
     Write-Host ("  |  Gyoker: " + $DriveRoot.PadRight(41) + "|") -ForegroundColor Cyan
     Write-Host ("  |  Log:    " + $LogDir.PadRight(41)    + "|") -ForegroundColor Cyan
@@ -385,7 +387,7 @@ function Show-Menu {
 
     Write-Host '  [1]  Gyors diagnosztika + ajanlasok  (START IDE)' -ForegroundColor Green
     Write-Host '  ---' -ForegroundColor DarkGray
-    Write-Host '  [2]  SVI_Cleanup_v2.ps1   - System Volume Information torles'
+    Write-Host '  [2]  SVI_Cleanup.ps1   - System Volume Information torles'
     Write-Host '  [3]  NTFS_Reset.ps1        - USN Journal, Shadow Copies, hiberfil'
     Write-Host '  [4]  Takarito.ps1          - Fajlok, cache, szemet torles'
     Write-Host '  [5]  SpaceDeepCheck.ps1    - Melyvizsgalat (rejtett foglaltsag)'
@@ -417,8 +419,8 @@ do {
             Start-QuickDiag
         }
         '2' {
-            Write-Log '--- SVI_Cleanup_v2.ps1 ---' 'Yellow'
-            Invoke-CleanupScript 'SVI_Cleanup_v2.ps1'
+            Write-Log '--- SVI_Cleanup.ps1 ---' 'Yellow'
+            Invoke-CleanupScript 'SVI_Cleanup.ps1'
             Read-Host "`n  [ENTER] a fomenthez"
         }
         '3' {
@@ -450,7 +452,7 @@ do {
             Write-Log '=== TELJES TAKARITAS INDUL ===' 'Yellow'
             Show-DriveBar
             Write-Log '--- 1/5: SVI Cleanup ---' 'Yellow'
-            Invoke-CleanupScript 'SVI_Cleanup_v2.ps1'
+            Invoke-CleanupScript 'SVI_Cleanup.ps1'
             Write-Log '--- 2/5: NTFS Reset ---' 'Yellow'
             Invoke-CleanupScript 'NTFS_Reset.ps1'
             Write-Log '--- 3/5: Takarito ---' 'Yellow'

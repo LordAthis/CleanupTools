@@ -1,8 +1,8 @@
 <#
 .SYNOPSIS
-    CleanupTools – SVI_Cleanup_v2.ps1
+    CleanupTools – SVI_Cleanup.ps1
     System Volume Information teljes kiürítése és jogosultság-visszaszerzése.
-    Ez az egyik leggyakoribb forrása a rejtett 5 GB+ foglaltságnak.
+    Ez az egyik leggyakoribb forrása a rejtett foglaltságoknak.
 .PARAMETER DriveRoot
     A meghajtó gyökere.
 #>
@@ -116,7 +116,7 @@ try {
     $restoreResult = & vssadmin delete shadows /for=$DriveSpec /oldest /quiet 2>&1
     Write-Log "Oldest shadow delete: $restoreResult" "DarkCyan"
 
-    # Rendszer visszaállítás letiltása (külső meghajtón amúgy sem kellene futni)
+    # Rendszer visszaállítás letiltása (Ha külső meghajtó, amúgy sem kellene futni, belsőn is csak a rendszer számára érdekes)
     Disable-ComputerRestore -Drive $DriveSpec -ErrorAction SilentlyContinue
     Write-Log "System Restore letiltva erre a meghajtóra." "Green"
 } catch {

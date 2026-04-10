@@ -35,6 +35,7 @@ function Write-Log {
     Write-Host "$stamp $Msg" -ForegroundColor $Color
 }
 
+# 32-bit PS / WOW64 redirection javítás: SysNative fallback
 function Get-VssAdmin {
     if ([Environment]::Is64BitProcess) { return "vssadmin.exe" }
     $sn = Join-Path $env:windir "SysNative\vssadmin.exe"
